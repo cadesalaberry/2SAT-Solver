@@ -1,0 +1,22 @@
+Assig2.java: Template code for assignment 2.  It accepts input from
+the given filename, or stdin if none specified.  An
+optional flag (-nobrute) can be given to select choice of
+the brute force (default) or optimized solutions.
+
+GenerateTests.java: Accepts 2 to 3 command line arguments and emits
+output to stdout.  First arg is number of
+variables, second is number of disjunctions.  An
+optional third argument specifies a random seed
+value so you reproduce an output.
+
+Note: to connect them together, on Linux, you can pipe the stdout of GenerateTests to the
+stdin of Assig2. Something like:
+
+java GenerateTests 4 10 | java Assig2
+
+Alternatively, you can write the output of GenerateTests to a file, and then read that
+into Assig2:
+
+java GenerateTests 4 10 > sample.txt
+java Assig2 sample.txt
+
