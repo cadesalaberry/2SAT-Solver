@@ -44,4 +44,57 @@ public class Assig2 {
             //System.out.println("Read "+a+" and "+b);
         }
     }
+    
+    /**
+     * Make sure not to parse the input before passing it.
+     * The Iterator should be at the beginning of the file in
+     * order for the bruteForce to work correctly.
+     * 
+     * @param input
+     * @return
+     */
+    public static boolean bruteForce(Scanner input) {
+    	
+    	boolean evaluatable = true;
+    	
+    	// first read in number of vars involved
+        int numV = input.nextInt();
+        
+        for (int j = 0; j < numV; j++) {
+        
+        	String binaryRepresentation = Integer.toBinaryString(j);
+        	
+	    	for (int i = 0; i < numV && evaluatable; i++) {
+	    		
+	    		int iFirst = input.nextInt();
+	    		int iSecond = input.nextInt();
+	    		
+	    		// Assigns correct sign according to j:
+	    		// 10011 means true-false-false-true-true
+	    		if (binaryRepresentation.charAt(Math.abs(iFirst)-1) == '0') {
+	    			iFirst *= -1;
+	    		}
+	    		if (binaryRepresentation.charAt(Math.abs(iSecond)-1) == '0') {
+	    			iFirst *= -1;
+	    		}
+	    			
+	    		evaluatable = evaluatable && evaluateOr(iFirst, iSecond);
+	    		
+	    	}
+	    	if (evaluatable) {
+	    		
+	    		System.out.println(binaryRepresentation + " worked. I am proud of you.");
+	    		return true;
+	    	}
+        }
+    	return false;
+    }
+    
+    public static boolean evaluateOr(int a, int b) {
+    	 return a > 0 || b > 0;    	
+    }
+    
+    public static boolean evaluateAnd(int a, int b) {
+   	 return a > 0 && b > 0;    	
+   }
 }
