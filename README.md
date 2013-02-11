@@ -59,9 +59,7 @@ Suppose you want to implement a queue, but have only available a stack. Recall, 
 Each and every element of the stack will go through 4 different steps:
 
 > enqueue:
-
 * 1 *push* onto **in**,
-
 > dequeue:
 * 1 *pop* off of **in**,
 * 1 *push* onto **out**,
