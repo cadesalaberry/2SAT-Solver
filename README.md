@@ -20,7 +20,19 @@ solveable or not. Do the following:
 
 (c) **5** Under what conditions is your brute force solution better in practice than your more efficient one? Give appropriate evidence. Note that for this you will need to do some experimentation, varying both the number of variables under consideration as well as the number of disjunctions.
 
-> The bruteforce method will be faster if a valid combination is found among the first tries.
+> The bruteforce method will be faster if a valid combination is found among the first tries, or if the sample to test has really few variables. The "smart" algorithm will take more time to process the input for it uses more lines of code.
+Here as the sample csv files to graph:
+
+		variables,	bruteforce,	smart
+		5,		30,		19
+		10,		41,		18
+		15,		50,		30
+		20,		59,		28
+		25,		66,		34
+		30,		74,		37
+		35,		81,		42
+		40,		89,		48
+
 
 A program for generating arbitrary sample 2SAT instances is available in *MyCourses*, as is a basic template code for reading that output that you can use as a template for your implementations. The template allows for branching based on a *-nobrute* flag, so you can use the same codebase for both solutions.
 
@@ -64,9 +76,10 @@ Each and every element of the stack will go through 4 different steps:
 
 enqueue represents 1 unit of work (push) whereas dequeue represents 3 (pop, push, pop).
 let *s* be the number of object in a stack.
-> T_amortized(enqueue) = O(1) + 1*(4 - 1) = 
-T_amortized(dequeue) = O(1) + 1*(4 - 1) = 
+> T_amortized(enqueue) = 1 + 1*(4 - 3) = 2
+T_amortized(dequeue)   = 3 + 1*(0 - 2) = 2
 
+The time taken while dequeuing will depend on when the last dequeue was. If dequeue and enqueue are used evenly over time, the dequeue method will take close to O(1).
 
 
 
