@@ -34,6 +34,34 @@ Suppose you want to implement a queue, but have only available a stack. Recall, 
 
 (a) **10** Describe in pseudo-code an implementation of a queue based on using 2 stacks. You may use an additional O(1) space if you need. Note that you do not need to actually implement this!
 
+> In this solution, dequeue() is designed to be the simplest possible.
+
+	makeQueue() {
+		stack.makeStack()
+	}	
+	dequeue() {
+		return stack.pop()
+	}
+	enqueue(element){
+		// Initializes a temporary stack.
+		tmpStack.makeStack()
+		
+		// Empties the stack.
+		while ( !stack.isEmpty() ){
+			tmpStack.push( stack.pop() )
+		}
+		
+		// Pushes the element to enqueue.
+		tmpStack.push(element)
+		
+		// Pushes back the values on the stack.
+		while ( !tmpStack.isEmpty() ) {
+			stack.push( tmpStack.pop() )
+		}
+	}
+
+
+
 
 (b) **10** The time bounds in your analysis be improved by amortization. Come up with an appropriate potential function and prove that your implementation enables each queue operation to be performed in O(1) amortized time.
 
