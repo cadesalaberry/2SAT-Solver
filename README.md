@@ -8,7 +8,7 @@
 #### Homework 2
 
 
-#### Question 1 (**20**)
+#### Question 1 ~ __/20
 
 Your tasks is to process an input 2SAT problem and output “yes” or “no” depending on whether it is
 solveable or not. Do the following:
@@ -18,13 +18,14 @@ solveable or not. Do the following:
 
 (b) **10** Implement the first 2 steps (i and ii) of the above, more efficient solution based on computing the SCC of an implication graph. Note that you only need to determine whether a solution exists or not, you do not need to actually output the assignment (ie the last 3 steps of the algorithm description are optional).
 
-(c) **5** Under what conditions is your brute force solution better in practice than your more efficient one?
-Give appropriate evidence. Note that for this you will need to do some experimentation, varying both the number of variables under consideration as well as the number of disjunctions.
+(c) **5** Under what conditions is your brute force solution better in practice than your more efficient one? Give appropriate evidence. Note that for this you will need to do some experimentation, varying both the number of variables under consideration as well as the number of disjunctions.
+
+> The bruteforce method will be faster if a valid combination is found among the first tries.
 
 A program for generating arbitrary sample 2SAT instances is available in *MyCourses*, as is a basic template code for reading that output that you can use as a template for your implementations. The template allows for branching based on a *-nobrute* flag, so you can use the same codebase for both solutions.
 
 
-#### Question 2 (**20**)
+#### Question 2 ~ __/20
 
 
 A basic queue has 3 operations: *makeQueue*, *enqueue* and *dequeue*. Queues maintain a FIFO property—
@@ -37,36 +38,36 @@ Suppose you want to implement a queue, but have only available a stack. Recall, 
 > In this solution, dequeue() is designed to be the simplest possible.
 
 	makeQueue() {
-		stack.makeStack()
-	}	
-	dequeue() {
-		return stack.pop()
+		in.makeStack()
+		out.makeStack()
 	}
-	enqueue(element){
-		// Initializes a temporary stack.
-		tmpStack.makeStack()
-		
-		// Empties the stack.
-		while ( !stack.isEmpty() ){
-			tmpStack.push( stack.pop() )
+	enqueue(E element) {
+		in.push(x);
+	}
+	E dequeue(){
+		if(out.isEmpty()) {
+			while(!in.isEmpty()) {
+				out.push(in.pop());
+			}
 		}
-		
-		// Pushes the element to enqueue.
-		tmpStack.push(element)
-		
-		// Pushes back the values on the stack.
-		while ( !tmpStack.isEmpty() ) {
-			stack.push( tmpStack.pop() )
-		}
+		return out.pop();
 	}
 
+(b) **10** The time bounds in your analysis can be improved by amortization. Come up with an appropriate potential function and prove that your implementation enables each queue operation to be performed in O(1) amortized time.
+
+> dequeue is not O(1) worst-case because **out** might be empty and **in** may have lots of items.
+Each and every element of the stack will go through 4 different steps:
+enqueue:
+* 1 *push* onto **in**,
+dequeue:
+* 1 *pop* off of **in**,
+* 1 *push* onto **out**,
+* 1 *pop* off of **out**
 
 
 
-(b) **10** The time bounds in your analysis be improved by amortization. Come up with an appropriate potential function and prove that your implementation enables each queue operation to be performed in O(1) amortized time.
 
-
-#### Question 3 (**10**)
+#### Question 3 ~ __/10
 
 
 Suppose you have an undirected graph *G* = ( *V*, *E* ), where *n* = | *V* |, and *n* is even. Prove that for all *n* ≥ 2, if every *v* ∈ *V* has *degree(v)* ≥ *n*/2 then *G* is necessarily connected.
