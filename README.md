@@ -69,7 +69,7 @@ Suppose you want to implement a queue, but have only available a stack. Recall, 
 #### Question 3 (**10**)
 
 
-Suppose you have an undirected graph *G* = ( *V*, *E*), where *n* = | *V*|, and *n* is even. Prove that for all *n* ≥ 2, if every *v* ∈ *V* has *degree(v)* ≥ *n*/2 then *G* is necessarily connected.
+Suppose you have an undirected graph *G* = ( *V*, *E* ), where *n* = | *V* |, and *n* is even. Prove that for all *n* ≥ 2, if every *v* ∈ *V* has *degree(v)* ≥ *n*/2 then *G* is necessarily connected.
 
 > Mannnnn I have no clue !
 
