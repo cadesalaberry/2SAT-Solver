@@ -57,7 +57,6 @@ Suppose you want to implement a queue, but have only available a stack. Recall, 
 
 > dequeue is not O(1) worst-case because **out** might be empty and **in** may have lots of items.
 Each and every element of the stack will go through 4 different steps:
-
 * 1 *push* onto **in**,
 * 1 *pop* off of **in**,
 * 1 *push* onto **out**,
