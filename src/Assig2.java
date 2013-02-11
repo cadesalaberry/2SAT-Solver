@@ -27,12 +27,17 @@ public class Assig2 {
         }
 
         if (bruteForce) {
-        	bruteForce(inp);
+        	if(bruteForce(inp)) System.out.println("yes");
         } else {
         	System.out.println("Smart method not implemented yet.");
         }
     }
     
+    /**
+     * Default code used as a sample.
+     * 
+     * @param inp
+     */
     public static void bullshit(Scanner inp) {
     	Scanner intScan = new Scanner(inp.nextLine());
 
