@@ -62,6 +62,11 @@ Each and every element of the stack will go through 4 different steps:
 * 1 *push* onto **out**,
 * 1 *pop* off of **out**
 
+enqueue represents 1 unit of work (push) whereas dequeue represents 3 (pop, push, pop).
+let *s* be the number of object in a stack.
+> T_amortized(enqueue) = O(1) + 1*(4 - 1) = 
+T_amortized(dequeue) = O(1) + 1*(4 - 1) = 
+
 
 
 
@@ -70,6 +75,10 @@ Each and every element of the stack will go through 4 different steps:
 
 Suppose you have an undirected graph *G* = ( *V*, *E* ), where *n* = | *V* |, and *n* is even. Prove that for all *n* ≥ 2, if every *v* ∈ *V* has *degree(v)* ≥ *n*/2 then *G* is necessarily connected.
 
-> Mannnnn I have no clue !
+> Assume *H* is an undirected and not connected graph with *n* = | *H* |, and *n* is even. Then we can separate *H* into two separate sets *M* and *K* that are not connected to each other with | *M* | = | *K* | = *n*/2.
+Each node of *M* will be able to connect to a maximum *n*/2-1 other nodes (it cannot connect to itself). Therefore *degree(m)* < *n*/2-1.
+Similarly, *degree(k)* < *n*/2-1.
+
+Using the proof by contradiction, we see that if *degree(m)* ≥ *n*/2 then *H* = ( *M*, *K* ) has to be connected.
 
 
