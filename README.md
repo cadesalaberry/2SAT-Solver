@@ -79,6 +79,6 @@ Suppose you have an undirected graph *G* = ( *V*, *E* ), where *n* = | *V* |, an
 Each node of *M* will be able to connect to a maximum *n*/2-1 other nodes (it cannot connect to itself). Therefore *degree(m)* < *n*/2-1.
 Similarly, *degree(k)* < *n*/2-1.
 
-Using the proof by contradiction, we see that if *degree(m)* ≥ *n*/2 then *H* = ( *M*, *K* ) has to be connected.
+>Using the **proof by contradiction**, we see that if *degree(m)* ≥ *n*/2 then *H* = ( *M*, *K* ) has to be connected.
 
 
