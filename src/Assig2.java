@@ -8,7 +8,7 @@ public class Assig2 {
     // a flag to indicate whether to use a simple brute-force solution
     // or not.
     public static void main(String[] args) {
-        Scanner intScan;
+        
         boolean bruteForce = true;
 
         Scanner inp = new Scanner(System.in);
@@ -26,7 +26,15 @@ public class Assig2 {
             }
         }
 
-        intScan = new Scanner(inp.nextLine());
+        if (bruteForce) {
+        	bruteForce(inp);
+        } else {
+        	System.out.println("Smart method not implemented yet.");
+        }
+    }
+    
+    public static void bullshit(Scanner inp) {
+    	Scanner intScan = new Scanner(inp.nextLine());
 
         // first read in number of vars involved
         int numV = intScan.nextInt();
@@ -44,7 +52,6 @@ public class Assig2 {
             //System.out.println("Read "+a+" and "+b);
         }
     }
-    
     /**
      * Make sure not to parse the input before passing it.
      * The Iterator should be at the beginning of the file in
@@ -55,30 +62,38 @@ public class Assig2 {
      */
     public static boolean bruteForce(Scanner input) {
     	
-    	boolean evaluatable = true;
+    	boolean evaluatable = false;
     	
     	// first read in number of vars involved
         int numV = input.nextInt();
         
-        for (int j = 0; j < numV; j++) {
+        int tries = (int) Math.pow(2, numV);
+        
+        for (int j = 0; j < tries; j++) {
         
         	String binaryRepresentation = Integer.toBinaryString(j);
+        	System.out.println("Looping: " + binaryRepresentation);
         	
-	    	for (int i = 0; i < numV && evaluatable; i++) {
+	    	for (int i = 0; i < numV && !evaluatable; i++) {
 	    		
 	    		int iFirst = input.nextInt();
 	    		int iSecond = input.nextInt();
 	    		
 	    		// Assigns correct sign according to j:
-	    		// 10011 means true-false-false-true-true
-	    		if (binaryRepresentation.charAt(Math.abs(iFirst)-1) == '0') {
-	    			iFirst *= -1;
-	    		}
-	    		if (binaryRepresentation.charAt(Math.abs(iSecond)-1) == '0') {
-	    			iFirst *= -1;
-	    		}
-	    			
-	    		evaluatable = evaluatable && evaluateOr(iFirst, iSecond);
+	    		// ie. 10011 means true-false-false-true-true
+	    		try {
+	    			if (binaryRepresentation.charAt(Math.abs(iFirst)-1) == '0') {
+	    				iFirst *= -1;
+	    			}
+	    		} catch (StringIndexOutOfBoundsException e){}
+	    		try {
+		    		if (binaryRepresentation.charAt(Math.abs(iSecond)-1) == '0') {
+		    			iFirst *= -1;
+		    		}
+	    		} catch (StringIndexOutOfBoundsException e){}
+	    		
+	    		System.out.println("Trying: " + binaryRepresentation);
+	    		evaluatable = evaluatable || evaluateOr(iFirst, iSecond);
 	    		
 	    	}
 	    	if (evaluatable) {
